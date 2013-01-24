@@ -58,13 +58,13 @@ var GameView = Backbone.View.extend({
 	},
 	shuffleDeck: function() {
 		var s = [];
-		while (this.defaults.deck.length)
-			s.push(this.defaults.deck.splice(Math.random() * this.defaults.deck.length, 1)[0]);
+		var deck = war.get('deck');
+		while (deck.length)
+			s.push(deck.splice(Math.random() * deck.length, 1)[0]);
 		while (s.length) 
-			this.defaults.deck.push(s.pop());
+			deck.push(s.pop());
 			
 		gameView.render();
-		console.log(this.defaults.deck);
 	},
 	dealCards: function() {
 		
