@@ -41,17 +41,20 @@ var PlayerList = Backbone.Collection.extend({
 });
 
 /* set up the game view which currently just has a nice 'lets play', number of players, and the current deck*/
+var game = war.get('game');
+var deck = war.get('deck');
+var numPlayers = war.get('players');
+
 var GameView = Backbone.View.extend({
 	events: {
-		'click #shuffle' : 'shuffleDeck'
+		'click #shuffle' : 'shuffleDeck',
+		'click #addPlayer' : 'addPlayer',
+		'click #removePlayer' : 'removePlayer'
 	},
 	initialize: function() {
 		this.render();
 	},
 	render: function() {
-		var game = war.get('game');
-		var deck = war.get('deck');
-		var numPlayers = war.get('players');
 		var variables = { gameLabel: 'Let\'s play a game of '+game, playersLabel: 'Players: '+numPlayers, deckLabel: 'Your current deck is '+deck};
 		var template = _.template($('#gameTemplate').html(), variables );
 		this.$el.html( template );
@@ -68,6 +71,16 @@ var GameView = Backbone.View.extend({
 	},
 	dealCards: function() {
 		
+	},
+	addPlayer: function() {
+		war.set('players', numPlayers++);
+		gameView.render();
+	},
+	removePlayer: function() {
+		if(numPlayers > 0) {
+			war.set('players', numPlayers--);
+			gameView.render();
+		}
 	}
 });
 

@@ -1,11 +1,17 @@
 <!doctype html>
 <html>
 	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Game With Backbone.js</title>
+		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
 		<script type="text/template" id="gameTemplate">
 			<button id="shuffle">Shuffle</button>
+			<button id="addPlayer">Add Player</button>
+			<button id="removePlayer">Remove Player</button>
 			<h2><%= gameLabel %></h2>
 			<h3><%= playersLabel %></h3>
 			<p><%= deckLabel %></p>
