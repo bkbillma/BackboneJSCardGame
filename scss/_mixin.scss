@@ -1,0 +1,15 @@
+@mixin raised($color) {
+	box-shadow:1px 1px darken($color,5%),
+			2px 2px darken($color,7%),
+			3px 3px darken($color,9%),
+			4px 4px darken($color,11%);
+	border: 2px solid lighten($color,7%);
+	top:-$bump;
+	left:-$bump;
+}
+
+@mixin raisedHover() {
+	box-shadow:none;
+	top:0;
+	left:0;
+}

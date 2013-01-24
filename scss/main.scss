@@ -1,3 +1,19 @@
+@import '_bits';
+@import '_mixin';
 *{box-sizing:border-box;word-wrap:break-word}
 
 body{font-family:'Myriad Pro','sans serif',Arial}
+button{
+	background: $brand;
+	border: none;
+	color: white;
+	font-weight: bold;
+	padding: $bump*2;
+	cursor: pointer;
+	@include raised($brand);
+	position: relative;
+	margin: $bump;
+	}
+button:hover{
+	@include raisedHover();
+}
