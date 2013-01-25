@@ -13,6 +13,7 @@ button{
 	@include raised($brand);
 	position: relative;
 	margin: $bump;
+	transition:200ms;
 	}
 button:hover{
 	@include raisedHover();
