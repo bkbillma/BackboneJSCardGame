@@ -25,10 +25,9 @@ var Game = Backbone.Model.extend({
 var war = new Game();
 
 /* model for a player */
-var Player = new Backbone.Model.extend({
+var Player = Backbone.Model.extend({
 	defaults: {
-		name: 'anonymous',
-		hand: []
+		name: 'anonymous'
 	},
 	initialize: function() {
 		console.log('A new player joined');
@@ -40,10 +39,13 @@ var PlayerList = Backbone.Collection.extend({
 	model: Player
 });
 
+var thePlayers = new PlayerList();
+
 /* set up the game view which currently just has a nice 'lets play', number of players, and the current deck*/
 var game = war.get('game');
 var deck = war.get('deck');
 var numPlayers = war.get('players');
+var player = [];
 
 var GameView = Backbone.View.extend({
 	events: {
@@ -52,6 +54,7 @@ var GameView = Backbone.View.extend({
 		'click #removePlayer' : 'removePlayer'
 	},
 	initialize: function() {
+		this.setPlayers();
 		this.render();
 	},
 	render: function() {
@@ -69,12 +72,25 @@ var GameView = Backbone.View.extend({
 			
 		gameView.render();
 	},
+	setPlayers: function() {
+		for(i = 1; i <= numPlayers; i++) {
+			var newPlayer = 'anonymous'+i;
+			player[i] = new Player({ name: newPlayer});
+			thePlayers.push(player[i]);
+		}
+	},
 	dealCards: function() {
-		
+		var currentPlayer = 1;
+		for(i = 0; i < deck.length; i++) {
+			
+		}
 	},
 	addPlayer: function() {
 		war.set('players', numPlayers++);
 		gameView.render();
+		var newPlayer = 'anonymous'+numPlayers;
+		player[numPlayers] = new Player({ name: newPlayer});
+		thePlayers.push(player[numPlayers]);
 	},
 	removePlayer: function() {
 		if(numPlayers > 0) {
