@@ -13,3 +13,7 @@
 	top:0;
 	left:0;
 }
+
+@mixin round($radius) {
+	border-radius: $radius;
+}

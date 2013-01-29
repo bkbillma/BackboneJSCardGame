@@ -2,18 +2,23 @@
 @import '_mixin';
 *{box-sizing:border-box;word-wrap:break-word}
 
-body{font-family:'Myriad Pro','sans serif',Arial}
+body{
+	font-family:'Myriad Pro','sans serif',Arial;
+	font-size:1.12em;
+}
 button{
-	background: $brand;
-	border: none;
-	color: white;
-	font-weight: bold;
-	padding: $bump*2;
 	cursor: pointer;
-	@include raised($brand);
 	position: relative;
+	background: $brand;
+	color: white;
+	padding: $bump*2;
 	margin: $bump;
-	transition:200ms;
+	border-radius: 1px;
+	font-size: 1em;
+	font-weight: bold;
+	text-shadow: 1px 1px $darkGray;
+	@include raised($brand);
+	transition: 200ms;
 	}
 button:hover{
 	@include raisedHover();
